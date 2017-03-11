@@ -7,7 +7,7 @@ https://wiki.maschinendeck.org/wiki/Projekte
 ## Services
 
 
-maschinentuer.fftr
+[maschinentuer.fftr](https://wiki.maschinendeck.org/wiki/Schließsystem)
   - Nginx forwards to MDOS and Letsencrypt
   - [Letsencrypt](https://letsencrypt.org/) SSL certificate
   - [MDOS](https://github.com/maschinendeck/mdos) Django app
@@ -16,14 +16,14 @@ maschinentuer.fftr
 
 
 
-maschinenpi.fftr
+[maschinenpi.fftr](https://wiki.maschinendeck.org/wiki/MaschinenPi)
   - MPD
   - ALSA config
   - Printer drivers
 
 
-maschinenstatus.fftr
-  - [Maschinenstatus](https://github.com/maschinendeck/Maschinenstatus) nodes for [info-beamer](https://github.com/dividuum/info-beamer/)
+[maschinenstatus.fftr](https://github.com/maschinendeck/Maschinenstatus)
+  - Nodes for [info-beamer](https://github.com/dividuum/info-beamer/)
 
 
 
