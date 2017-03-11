@@ -44,7 +44,7 @@
 - name: Remove default nginx config
   file: name=/etc/nginx/sites-enabled/mdosweb.conf state=absent
 
-- name: Install nginx config
+- name: Install nginx-boot config
   copy: src=files/nginx-boot.conf dest=/etc/nginx/sites-enabled/mdosweb.conf owner=root group=root mode=0644
 
 - name: Create letsencrypt public directory
@@ -58,12 +58,11 @@
   args:
     creates: /etc/letsencrypt/live/tuer.maschinendeck.org
 
-
-
-
 - name: Install mdosweb nginx config
   copy: src=files/nginx.conf dest=/etc/nginx/sites-enabled/mdosweb.conf owner=root group=root mode=0644
 
+- name: Reload nginx to activate letsencrypt site
+  service: name=nginx state=restarted
 
 
 
