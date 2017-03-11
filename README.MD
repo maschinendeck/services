@@ -47,6 +47,13 @@ vagrant up
 ```
 
 
+SSH into machine:
+
+```
+vagrant ssh
+```
+
+
 Run provision:
 
 ```
