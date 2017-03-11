@@ -21,7 +21,7 @@
 
 
 - name: Clone or update MDOS repository
-  git: repo={{mdos_repository_url}}
+  git: repo=https://github.com/maschinendeck/mdos.git
        dest=/home/pi/mdos
        clone=true
        accept_hostkey=true
@@ -54,9 +54,9 @@
   service: name=nginx state=restarted
 
 - name: Create letsencrypt certificate
-  shell: letsencrypt certonly -n --webroot -w /var/www/html -m {{ letsencrypt_email }} --agree-tos -d {{ domain_name }}
+  shell: letsencrypt certonly -n --webroot -w /var/www/html -m info@maschinendeck.org --agree-tos -d tuer.maschinendeck.org
   args:
-    creates: /etc/letsencrypt/live/{{ domain_name }}
+    creates: /etc/letsencrypt/live/tuer.maschinendeck.org
 
 
 
@@ -71,4 +71,4 @@
   cron:
     name: letsencrypt_renewal
     special_time: weekly
-    job: letsencrypt --renew certonly -n --webroot -w /var/www/letsencrypt -m {{ letsencrypt_email }} --agree-tos -d {{ domain_name }} && service nginx reload
+    job: letsencrypt --renew certonly -n --webroot -w /var/www/letsencrypt -m info@maschinendeck.org --agree-tos -d tuer.maschinendeck.org && service nginx reload
