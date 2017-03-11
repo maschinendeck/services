@@ -1,0 +1,74 @@
+
+- name: Upgrade system
+  apt: upgrade=dist update_cache=yes
+
+- name: Install nginx
+  apt: name=nginx state=latest
+
+- name: Install letsencrypt
+  apt: name=letsencrypt state=latest
+
+- name: Install python libraries
+  apt: name={{item}} state=latest
+  with_items:
+    - python-pip
+
+- name: Install virtualenv
+  pip: name={{item}}
+  with_items:
+    - virtualenv
+
+
+
+- name: Clone or update MDOS repository
+  git: repo={{mdos_repository_url}}
+       dest=/home/pi/mdos
+       clone=true
+       accept_hostkey=true
+       update=true
+
+- name: Create MDOS python virtualenv
+  command: virtualenv /home/pi/mdosvenv creates="/home/pi/mdosvenv"
+
+- name: Install MDOS libraries into virtualenv
+  pip: name={{item}} virtualenv=/home/pi/mdosvenv
+  with_items:
+    - uwsgi
+    - RPi.GPIO
+
+
+
+- name: Remove default nginx config
+  file: name=/etc/nginx/sites-enabled/default state=absent
+
+- name: Remove default nginx config
+  file: name=/etc/nginx/sites-enabled/mdosweb.conf state=absent
+
+- name: Install nginx config
+  copy: src=files/nginx-boot.conf dest=/etc/nginx/sites-enabled/mdosweb.conf owner=root group=root mode=0644
+
+- name: Create letsencrypt public directory
+  file: path=/var/www/html state=directory owner=root group=root mode=0700
+
+- name: Reload nginx to activate letsencrypt site
+  service: name=nginx state=restarted
+
+- name: Create letsencrypt certificate
+  shell: letsencrypt certonly -n --webroot -w /var/www/html -m {{ letsencrypt_email }} --agree-tos -d {{ domain_name }}
+  args:
+    creates: /etc/letsencrypt/live/{{ domain_name }}
+
+
+
+
+- name: Install mdosweb nginx config
+  copy: src=files/nginx.conf dest=/etc/nginx/sites-enabled/mdosweb.conf owner=root group=root mode=0644
+
+
+
+
+- name: Add letsencrypt cronjob for cert renewal
+  cron:
+    name: letsencrypt_renewal
+    special_time: weekly
+    job: letsencrypt --renew certonly -n --webroot -w /var/www/letsencrypt -m {{ letsencrypt_email }} --agree-tos -d {{ domain_name }} && service nginx reload

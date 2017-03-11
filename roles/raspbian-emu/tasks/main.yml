@@ -1,0 +1,23 @@
+
+# emulate a raspbian
+# http://tsengf.blogspot.de/2015/08/default-groups-for-user-pi-in-raspbian.html
+
+- name: Create spi group
+  group:
+    name: spi
+    state: present
+
+- name: Create i2c group
+  group:
+    name: i2c
+    state: present
+
+- name: Create gpio group
+  group:
+    name: gpio
+    state: present
+
+- name: Create pi user
+  user:
+    name: pi
+    groups: dialout,spi,i2c,gpio

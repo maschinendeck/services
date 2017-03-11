@@ -1,0 +1,3 @@
+letsencrypt_email: info@maschinendeck.org
+domain_name: tuer.maschinendeck.org
+mdos_repository_url: https://github.com/maschinendeck/mdos.git
