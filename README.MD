@@ -1,14 +1,23 @@
 
 
+The purpose of this repository is to provide service definitions to:
+
+  - quickly and safely restore a system in the case of a crash
+  - save time when extending a system
+  - provide documentation for old and new people
+
+
 
 For each service there is a role.
 
 The services can be setup via [Ansible](https://www.ansible.com/).
-There is a [Vagrant](https://www.vagrantup.com/) setup to run provision on a local virtual machine.
+There is a [Vagrant](https://www.vagrantup.com/) definition to test provisioning on a local virtual machine.
 
 
 
 https://wiki.maschinendeck.org/wiki/Projekte
+
+
 
 
 
