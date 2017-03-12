@@ -20,6 +20,12 @@
 
 
 
+- name: Install freifunk wifi config
+  copy: src=files/wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf owner=root group=root mode=0600
+
+
+
+
 - name: Clone or update MDOS repository
   git: repo=https://github.com/maschinendeck/mdos.git
        dest=/home/pi/mdos
