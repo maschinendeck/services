@@ -3,7 +3,7 @@
 The purpose of this repository is to provide service definitions to:
 
   - quickly and safely restore a system in the case of a crash
-  - save time when extending a system
+  - save time when extending and managing a system
   - provide documentation for old and new people
 
 
