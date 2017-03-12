@@ -1,5 +1,13 @@
 
 
+
+For each service there is a role.
+
+The services can be setup via [Ansible](https://www.ansible.com/).
+There is a [Vagrant](https://www.vagrantup.com/) setup to run provision on a local virtual machine.
+
+
+
 https://wiki.maschinendeck.org/wiki/Projekte
 
 
@@ -26,19 +34,14 @@ https://wiki.maschinendeck.org/wiki/Projekte
   - Nodes for [info-beamer](https://github.com/dividuum/info-beamer/)
 
 
+mate.fftr
+  - Matepad
 
-
-## Provision
-
-The services can be setup via [Ansible](https://www.ansible.com/).
-
-For each service there is a role.
 
 
 
 ## For local development
 
-There is a [Vagrant](https://www.vagrantup.com/) setup to run provision on a local virtual machine.
 
 Start the virtual machine:
 
