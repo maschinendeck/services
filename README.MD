@@ -34,8 +34,8 @@ https://wiki.maschinendeck.org/wiki/Projekte
   - Nodes for [info-beamer](https://github.com/dividuum/info-beamer/)
 
 
-mate.fftr
-  - Matepad
+[mate.fftr](https://wiki.maschinendeck.org/wiki/Matepad)
+  - [Metepad](https://github.com/chaosdorf/mete)
 
 
 
